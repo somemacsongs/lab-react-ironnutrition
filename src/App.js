@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import 'antd/dist/antd.min.css';
+import foods from './foods.json';
+import FoodBox from './Components/FoodBox/FoodBox.js';
+import style from "./Apps.module.css"
+import AddFoodForm from './Components/AddFoodForm/AddFoodForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h3 align="center">Food List</h3>
+      <AddFoodForm key="form"/>
+      <div className={style.grid}>
+      {
+        foods.map((current)=>{
+          return (
+            <FoodBox food={current} key={current.name}/>
+          )
+        })
+      }
+      </div>
     </div>
   );
 }
